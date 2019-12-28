@@ -37,7 +37,7 @@ except ImportError:
         else:
             raise NotImplementedError("OS " + sys.platform + " is not supported")
     # end getting git
-    comms = f"python3 -m pip install git+{MODULES_TO_IMPORT}"
+    comms = f"python3 -m pip install git+{MODULES_TO_IMPORT} --user"
     os.system(comms)
     try:
         import commands
