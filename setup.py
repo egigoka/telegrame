@@ -15,7 +15,7 @@ setup(
     author_email='egigoka@gmail.com',
     url="https://www.github.com/egigoka/telegrame",
     packages=['telegrame'],  # same as name
-    install_requires=['PyTelegramBotAPI==2.2.3'],
+    install_requires=['PyTelegramBotAPI'],
     extras_require={},
     include_package_data=True,
 )
