@@ -6,9 +6,9 @@ with open("README.md", 'r') as f:
 exec(open('telegrame/_version.py').read())
 
 setup(
-    name='commands',
+    name='telegrame',
     version=__version__,
-    description='Mine commands',
+    description='telegrame',
     license="MIT",
     long_description=long_description,
     author='Egor Egorov',
