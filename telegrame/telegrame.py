@@ -2,7 +2,8 @@ import requests
 try:
     from commands import *
 except ImportError:
-    from bootstrapping_module import * 
+    from bootstrapping_module import *
+    from commands import *
 try:
     import telebot
 except ImportError:
