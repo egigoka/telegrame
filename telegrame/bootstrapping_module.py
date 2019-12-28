@@ -1,6 +1,9 @@
 #! python3
 # -*- coding: utf-8 -*-
-# # # bootstrap # # # 1.4.0
+# # # bootstrap # # # 1.5.0
+
+MODULE_TO_IMPORT = "https://github.com/egigoka/commands"
+
 import sys
 import os
 def download_file(url, out=None):
@@ -16,7 +19,7 @@ def download_file(url, out=None):
 
 try:  # getting commands
     import commands
-except (ModuleNotFoundError, ImportError):
+except ImportError:
     # getting git
     if os.system("git --version"):  # if get error while checking git version
         if sys.platform == "win32":  # getting git
@@ -33,7 +36,12 @@ except (ModuleNotFoundError, ImportError):
             os.system("brew install git")  # todo test
         else:
             raise NotImplementedError("OS " + sys.platform + " is not supported")
-	# end getting git
-    os.system("pip install git+https://github.com/egigoka/commands")
-    import commands
+    # end getting git
+    comms = f"python3 -m pip install git+{MODULE_TO_IMPORT}"
+    os.system(comms)
+    try:
+        import commands
+    except ImportError:
+        print("try to install module manually:")
+        print(comms)
 # # # end bootstrap # # #
