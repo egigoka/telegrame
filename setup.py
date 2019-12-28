@@ -15,7 +15,7 @@ setup(
     author_email='egigoka@gmail.com',
     url="https://www.github.com/egigoka/telegrame",
     packages=['telegrame'],  # same as name
-    install_requires=['telebot'],
+    install_requires=['telebot=2.2.3'],
     extras_require={},
     include_package_data=True,
 )
