@@ -1,9 +1,9 @@
 import requests
 try:
-    from commands import *
+    from commands import Time, File, Str, Int
 except ImportError:
     from bootstrapping_module import *
-    from commands import *
+    from commands import Time, File, Str, Int
 try:
     import telebot
 except ImportError:
@@ -75,6 +75,7 @@ def send_message(telegram_api_object, chat_id, text,
         return output
     else:
         return output
+
 
 def delete_message(telegram_api: telebot.TeleBot, chat_id, message_id):
     return telegram_api.delete_message(chat_id, message_id)
