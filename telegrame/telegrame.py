@@ -1,9 +1,9 @@
 import requests
 try:
-    from commands import *
+    from commands import Time, File, Str, Int
 except ImportError:
     from bootstrapping_module import *
-    from commands import *
+    from commands import Time, File, Str, Int
 try:
     import telebot
 except ImportError:
@@ -51,6 +51,13 @@ def send_photo(telegram_api, image_path, chat_id):
         raise FileNotFoundError(f"File not exist: '{image_path}'")
     photo = open(image_path, 'rb')
     telegram_api.send_photo(chat_id, photo)
+
+
+def send_video(telegram_api, video_path, chat_id):
+    if not File.exist(video_path):
+        raise FileNotFoundError(f"File not exist: '{video_path}'")
+    video = open(video_path, 'rb')
+    telegram_api.send_video(chat_id, video)
 
 
 def send_message(telegram_api_object, chat_id, text,
