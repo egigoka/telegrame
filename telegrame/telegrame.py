@@ -64,17 +64,24 @@ def send_message(telegram_api_object, chat_id, text,
         texts = ["<empty message>"]
     output = []
     for text in texts:
-        output.append(telegram_api_object.send_message(chat_id=chat_id, text=text,
-                                                       disable_web_page_preview=disable_web_page_preview,
-                                                       reply_to_message_id=reply_to_message_id,
-                                                       reply_markup=reply_markup, parse_mode=parse_mode,
-                                                       disable_notification=disable_notification))
+        for i in range(10):
+            try:
+                output.append(telegram_api_object.send_message(chat_id=chat_id, text=text,
+                                                               disable_web_page_preview=disable_web_page_preview,
+                                                               reply_to_message_id=reply_to_message_id,
+                                                               reply_markup=reply_markup, parse_mode=parse_mode,
+                                                               disable_notification=disable_notification,
+                                                               timeout=300))
+                break
+            except requests.exceptions.ReadTimeout:
+                pass
     if len(output) == 0:
         return []
     elif len(output) == 1:
         return output
     else:
         return output
+
 
 def delete_message(telegram_api: telebot.TeleBot, chat_id, message_id):
     return telegram_api.delete_message(chat_id, message_id)
