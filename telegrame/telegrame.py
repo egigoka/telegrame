@@ -29,7 +29,8 @@ def very_safe_start_bot(bot_func):
     safe_start_bot(bot_func=bot_func, skipped_exceptions=(requests.exceptions.ReadTimeout,
                                                           requests.exceptions.ConnectionError,
                                                           requests.exceptions.ChunkedEncodingError,
-                                                          telebot.apihelper.ApiException))
+                                                          telebot.apihelper.ApiException,
+                                                          telebot.apihelper.ApiTelegramException))
 
 
 def download_file(telegram_api, telegram_token, file_id, output_path):
